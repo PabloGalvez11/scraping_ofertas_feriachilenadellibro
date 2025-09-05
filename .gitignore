@@ -1,7 +1,4 @@
-# Archivos temporales de Python
-src/pipeline/__pycache__/
+# Ignorar cualquier __pycache__ que aparezca en el futuro
+**/__pycache__/
 *.pyc
 *.pyo
-
-deployments/__pycache__/
-*.pyc
