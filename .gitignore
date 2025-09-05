@@ -1,4 +1,7 @@
 # Archivos temporales de Python
-__pycache__/
+src/pipeline/__pycache__/
 *.pyc
 *.pyo
+
+deployments/__pycache__/
+*.pyc
