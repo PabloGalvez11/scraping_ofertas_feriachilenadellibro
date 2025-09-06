@@ -10,22 +10,6 @@ El proyecto tiene por objetivo abarcar y practicar el uso de diversas habilidade
 
 ---
 
-Se contemplan los siguientes pasos generales:
-
-- Extracción de datos mediante uso de Web Scraping
-- Limpieza de los datos extraídos para su posterior análisis.
-- Guardado de datos limpios dentro de una base de datos local por medio de PostgreSQL.
-- Análisis predictivo de tres distintas variables provenientes de la base de datos.
-- Uso de técnicas de Procesamiento del Lenguaje Natural (NLP) a partir de descripciones de libros.
-
-Dichos pasos anteriores servirán para la creación de un flujo para el proceso de extracción, limpieza, análisis predictivo, NLP y guardado.
-
-
-Además, se incluirán los siguintes apartados a ser practicados:
-- Creación de API mediante FastAPI de manera local.
-- Análisis descriptivo con visualización de gráficas por medio de PowerBI.
-- Guardado en repositorio de GitHub.
-
 
 ## Carpetas del proyecto
 
@@ -57,3 +41,21 @@ Además, se incluirán los siguintes apartados a ser practicados:
 - **.env.example**: Se utiliza para que otras personas puedan realizar el proceso sin utilizar mis mismas credenciales de la base de datos.
 - **requirements.txt**: Contiene todas las librerías utilizadas dentro del proyecto, algunas con sus respectivas versiones.
 
+## Metodología
+
+Se contemplan los siguientes pasos generales dentro del pipeline:
+
+- Extracción de datos mediante uso de Web Scraping
+- Limpieza de los datos extraídos para su posterior análisis.
+- Guardado de datos limpios dentro de una base de datos local por medio de PostgreSQL.
+- Análisis predictivo de tres distintas variables provenientes de la base de datos.
+- Uso de técnicas de Procesamiento del Lenguaje Natural (NLP) a partir de descripciones de libros.
+- Creación de flujo
+
+Dichos pasos anteriores servirán para la creación de un flujo para el proceso de extracción, limpieza, análisis predictivo, NLP y guardado.
+
+
+Además, se incluirán los siguintes apartados a ser practicados:
+- Creación de API mediante FastAPI de manera local.
+- Análisis descriptivo con visualización de gráficas por medio de PowerBI.
+- Guardado en repositorio de GitHub.
