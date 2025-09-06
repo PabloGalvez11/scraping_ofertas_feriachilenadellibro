@@ -4,14 +4,9 @@ Este proyecto consiste en la aplicación en conjunto de diversas técnicas apren
 
 El proyecto tiene por objetivo abarcar y practicar el uso de diversas habilidades que puedan realizarse con sólo poseer un nicho de datos. 
 
----
-
 ## Estructura del proyecto
 
----
-
-
-## Carpetas del proyecto
+### Carpetas del proyecto
 
 - **data/raw** : Contiene los datos obtenidos mediante web scraping.
 - **data/processed** : Contiene los datos de raw luego de haberles realizado.
