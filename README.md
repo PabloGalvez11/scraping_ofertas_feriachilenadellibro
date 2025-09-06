@@ -4,6 +4,7 @@ Este proyecto consiste en la aplicación en conjunto de diversas técnicas apren
 
 El proyecto tiene por objetivo abarcar y practicar el uso de diversas habilidades que puedan realizarse con sólo poseer un nicho de datos. 
 
+---
 
 ## Estructura del proyecto
 
@@ -36,6 +37,8 @@ Además, se incluirán los siguintes apartados a ser practicados:
 - src/pipeline: Contiene los archivos .py utilizados para la elaboración del pipeline.
 - words: Contiene documentos de texto word con códigos para la creación de medidas y columnas DAX, además de preguntas para responder con gráficas de PowerBI.
 
+---
+
 ### Archivos dentro de src/pipeline
 - __init__.py: Se utiliza para asignar la carpeta de pipeline como un paquete.
 - config.py: Contiene variables y funciones definidas para proveer a los demás archivos.
@@ -51,3 +54,5 @@ Además, se incluirán los siguintes apartados a ser practicados:
 - .env: Se utiliza para guardar las credenciales de la base de datos.
 - .env.example: Se utiliza para que otras personas puedan realizar el proceso sin utilizar mis mismas credenciales de la base de datos.
 - requirements.txt: Contiene todas las librerías utilizadas dentro del proyecto, algunas con sus respectivas versiones.
+
+---
