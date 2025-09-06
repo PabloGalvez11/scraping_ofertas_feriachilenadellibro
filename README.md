@@ -31,7 +31,7 @@ El proyecto tiene por objetivo abarcar y practicar el uso de diversas habilidade
 - **modelo_precio_original.py**: Contiene el proceso para el entrenamiento, predicción y exportación del modelo relacionado a predecir el precio original de un libro.
 - **scraping.py**: Contiene el proceso de extracción de datos mediante web scraping.
 
-## Archivos adicionales
+### Archivos adicionales
 - **.env**: Se utiliza para guardar las credenciales de la base de datos.
 - **.env.example**: Se utiliza para que otras personas puedan realizar el proceso sin utilizar mis mismas credenciales de la base de datos.
 - **requirements.txt**: Contiene todas las librerías utilizadas dentro del proyecto, algunas con sus respectivas versiones.
