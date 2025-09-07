@@ -1,7 +1,7 @@
 from prefect import flow, task
 from .scraping import scraping_libros
 from .limpieza_datos import limpieza_datos
-from .csv_to_SQL import csv_to_SQL
+from .guardar_en_SQL import guardar_en_SQL
 from .modelo_precio_original import modelo_precio_original
 from .modelo_precio_oferta import modelo_precio_oferta
 from .modelo_descuento import modelo_descuento
@@ -16,7 +16,7 @@ def limpieza_datos_task():
 
 @task(persist_result=False, cache_result_in_memory=False)
 def guardar_en_SQL_task():
-    return csv_to_SQL()
+    return guardar_en_SQL()
 
 @task(persist_result=False, cache_result_in_memory=False)
 def modelo_precio_original_task():

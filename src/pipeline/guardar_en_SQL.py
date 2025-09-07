@@ -6,7 +6,7 @@ import os
 from datetime import datetime
 from .config import fecha_scraping, PROCESSED_DIR, engine
 
-def csv_to_SQL():
+def guardar_en_SQL():
 
     df = pd.read_csv(os.path.join(PROCESSED_DIR, f'ofertas_{fecha_scraping}.csv'), sep=";", decimal=",", encoding="utf-8")
 

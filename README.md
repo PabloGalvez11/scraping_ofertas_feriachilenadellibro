@@ -23,7 +23,7 @@ El proyecto tiene por objetivo abarcar y practicar el uso de diversas habilidade
 ### Archivos dentro de src/pipeline
 - **__init__.py**: Se utiliza para asignar la carpeta de pipeline como un paquete.
 - **config.py**: Contiene variables y funciones definidas para proveer a los demás archivos.
-- **csv_to_SQL**: Contiene el código para el guardado de datasets dentro de la base de datos.
+- **guardar_en_SQL.py**: Contiene el código para el guardado de datasets dentro de la base de datos.
 - **flow.py**: Contiene el flujo para el funcionamiento del pipeline.
 - **limpieza_datos.py**: Contiene el proceso de limpieza de datos de los datos extraídos por medio de web scraping.
 - **modelo_descuento.py**: Contiene el proceso para el entrenamiento, predicción y exportación del modelo relacionado a predecir el porcentaje de descuento de un libro.
@@ -38,19 +38,54 @@ El proyecto tiene por objetivo abarcar y practicar el uso de diversas habilidade
 
 ## Metodología
 
-Se contemplan los siguientes pasos generales dentro del pipeline:
+Se contemplan los siguientes pasos generales dentro del pipeline para la creación de un flujo para el proceso de extracción, limpieza, análisis predictivo, NLP y guardado de datos:
 
-- Extracción de datos mediante uso de Web Scraping
-- Limpieza de los datos extraídos para su posterior análisis.
-- Guardado de datos limpios dentro de una base de datos local por medio de PostgreSQL.
-- Análisis predictivo de tres distintas variables provenientes de la base de datos.
-- Uso de técnicas de Procesamiento del Lenguaje Natural (NLP) a partir de descripciones de libros.
-- Creación de flujo
+---
 
-Dichos pasos anteriores servirán para la creación de un flujo para el proceso de extracción, limpieza, análisis predictivo, NLP y guardado.
+### 0. Definir variables y directorios a utilizar
+
+Se realizó dentro de `config.py`. Este archivo contiene variables y funciones definidas para proveer a los demás archivos, tales como la fecha de extracción de datos (fecha de hoy), detalles de la base de datos local, directorio de carpetas y función para estandarización. Si bien, no se puede considerar un paso como tal, es crucial su inclusión previa a los otros pasos.
+
+###  1. Web Scraping para extracción de datos
+
+Se realizó dentro de `scraping.py`, principalmente con uso de la librería `BeautifulSoup`. El proceso consiste en:
+- Identificar la cantidad de pestañas dentro de la sección de ofertas, para luego solicitar al usuario entre qué pestañas realizar la extracción 
+- Ingresar uno por uno al link de cada libro dentro de la sección de ofertas, para luego extraer información más detallada acerca del libro ofertado.
+- Cada página de la sección de ofertas se guarda como archivo .csv para luego ser eliminados y unidos en uno solo, con nombre respectivo a la fecha de extracción. Dicho proceso toma alrededor de 2 horas.
+
+### 2. Limpieza de los datos extraídos
+
+Se realizó dentro de `limpieza_datos.py`, principalmente con uso de las librerías `pandas` y `numpy`. El proceso consiste en:
+
+- Limpieza de variables numéricas y categóricas. 
+- Creación de variables, eliminación de valores irregulares, reasignación de categorías.
+- Limpieza de variable de texto asociada a la descripción del libro para su posterior uso en NLP.
+
+### 3. Guardado de datos dentro de una base de datos local PostgreSQL
+
+Se realizó dentro de `guardar_en_SQL.py`, principalmente con uso de las librerías `pandas`, `sqlalchemy` y `psycopg2`. El proceso consiste en utilizar la variable engine definida dentro de `config.py` correspondiente a la dirección de la base de datos creada en PostgreSQL.
+
+### 4. Análisis predictivo de variables asociadas a un libro.
+
+Se realizaron de manera paralela tres modelos predictivos para variables asociadas a los libros, separadas en tres distintos archivos. Dentro de cada archivo se ajustaron los datos acorde a la variable objetivo, para luego entrenar, guardar y testear los modelos. Los modelos entrenados fueron guardados dentro de la carpeta models. Los modelos son los siguientes:
+
+- **Precio original**: Dentro del archivo `modelo_precio_original.py`, con objetivo de predecir el precio original de un libro, se ajustó un modelo de regresión lineal.
+- **Precio de oferta**: Dentro del archivo `modelo_precio_oferta.py`, con objetivo de predecir el precio de oferta de un libro, se ajustó un modelo de regresión lineal.
+- **Descuento**: Dentro del archivo `modelo_descuento.py`, con objetivo de predecir el porcentaje de descuento de un libro, separado en rangos de categorías, se ajustó un modelo de regresión multinomial ordinal, con aplicación de técnicas de remuestreo como SMOTE. Para este caso en particular, las predicciones no suelen ser muy precisas.
+
+### 5. Uso de técnicas de Procesamiento del Lenguaje Natural (NLP)
+
+Aún en construcción y evaluando si es posible agregarlo al pipeline.
+
+### 6. Creación de flujo de datos
+
+Se realizó dentro de `flow.py`, utilizando la librería `prefect` para ello.
+Dentro del archivo se definieron los pasos "task" y se juntaron dentro del flujo "flow". Siguiendo un orden de extracción, limpieza, guardado y finalmente modelamiento de los datos.
 
 
-Además, se incluirán los siguintes apartados a ser practicados:
+## Apartados adicionales
+
+Se incluirán los siguintes apartados a ser practicados, que bien pueden incorporarse después del paso de guardado de datos:
 - Creación de API mediante FastAPI de manera local.
 - Análisis descriptivo con visualización de gráficas por medio de PowerBI.
 - Guardado en repositorio de GitHub.
