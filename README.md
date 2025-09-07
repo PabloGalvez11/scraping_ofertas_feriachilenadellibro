@@ -82,7 +82,7 @@ Aún en construcción y evaluando si es posible agregarlo al pipeline.
 Se realizó dentro de `flow.py`, utilizando la librería `prefect` para ello.
 Dentro del archivo se definieron los pasos "task" y se juntaron dentro del flujo "flow". Siguiendo un orden de extracción, limpieza, guardado y finalmente modelamiento de los datos.
 
-
+---
 ## Apartados adicionales
 
 Se incluirán los siguintes apartados a ser practicados, que bien pueden incorporarse después del paso de guardado de datos:
