@@ -11,7 +11,7 @@ app = FastAPI()
 
 
 fecha_scraping = "2025_09_02"
-df = pd.read_sql(f"SELECT * FROM ofertas_{fecha_scraping}", engine)
+df = pd.read_sql(f"SELECT * FROM ofertas_feriachilenadellibro", engine)
 
 
 @app.get("/")

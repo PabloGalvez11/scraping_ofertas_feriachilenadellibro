@@ -17,7 +17,7 @@ from .config import fecha_scraping, PROCESSED_DIR, MODELS_DIR, engine, estandari
 def modelo_precio_oferta():
 
     #Importamos los datos
-    df = pd.read_sql(f"SELECT * FROM ofertas_{fecha_scraping}", engine)
+    df = pd.read_sql(f"SELECT * FROM total_ofertas_feriachilenadellibro", engine)
     #df = pd.read_csv(os.path.join(PROCESSED_DIR, f"ofertas_{fecha_scraping}.csv"), sep=";", decimal=",", encoding="utf-8")
 
 

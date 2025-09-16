@@ -11,7 +11,7 @@ El proyecto tiene por objetivo abarcar y practicar el uso de diversas habilidade
 - **data/raw** : Contiene los datos obtenidos mediante web scraping.
 - **data/processed** : Contiene los datos de raw luego de haberles realizado.
 - **deployments**: Contiene el código para la creación de una web API.
-- **models**: Contiene los tres tipos de modelos separados en carpetas según la variable objetivo.
+- **models**: Contiene los tres tipos de modelos separados en carpetas según la variable objetivo. Se van acumulando según el flujo que se realiza. La idea es el entrenamiento de un nuevo modelo utilizando el total de registros según la fecha de ejecución, por lo que se espera que un modelo antiguo haya sido entrenado con menos registros que uno más reciente, ya que el más reciente utiliza los registro extraídos en fechas pasadas y además incluye los de la extracción más reciente.
 - **notebooks**: Contiene los códigos "prototipo" de los pasos previos a la estructuración en archivos .py.
 - **paletas de colores**: Contiene paletas de colores para ser utilizadas en PowerBI.
 - **queries**: Contiene las queries que se realizaron para la creación de la base de datos en PostgreSQL.
