@@ -86,7 +86,7 @@ def modelo_descuento():
         X_train,
         distr='logit'  # 'logit' o 'probit'
     )
-    res = modelo.fit(method='lbfgs',maxiter=3000, disp=True)
+    res = modelo.fit(method='bfgs',maxiter=2000, disp=True)
     # Resumen con p-valores y significancia
     print(res.summary())
     joblib.dump(res, os.path.join(MODELS_DIR, f"modelos_descuento/modelo_descuento_{fecha_scraping}.joblib"))
