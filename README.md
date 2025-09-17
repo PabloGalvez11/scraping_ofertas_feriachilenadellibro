@@ -4,6 +4,8 @@ Este proyecto consiste en la aplicación en conjunto de diversas técnicas apren
 
 El proyecto tiene por objetivo abarcar y practicar el uso de diversas habilidades que puedan realizarse con sólo poseer un nicho de datos. 
 
+Se evaluó dividir en README's según carpeta, pero se optó por mantener toda la explicación de la información en un sólo archivo.
+
 ## Estructura del proyecto
 
 ### Carpetas del proyecto
