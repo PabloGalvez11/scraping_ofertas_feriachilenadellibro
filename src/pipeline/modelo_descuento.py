@@ -89,7 +89,7 @@ def modelo_descuento():
     res = modelo.fit(method='bfgs',maxiter=2000, disp=True)
     # Resumen con p-valores y significancia
     print(res.summary())
-    joblib.dump(res, os.path.join(MODELS_DIR, f"modelos_descuento/modelo_descuento_{fecha_scraping}.joblib"))
+    joblib.dump(res, os.path.join(MODELS_DIR, f"modelos_descuento/modelo_descuento_{fecha_scraping}.joblib"), compress=3)
 
     # Predicciones
 

@@ -57,7 +57,7 @@ def modelo_precio_original():
     #Creamos y ajustamos el modelo
     modelo = LinearRegression()
     modelo.fit(X_train, y_train)
-    joblib.dump(modelo, os.path.join(MODELS_DIR, f"modelos_precio_original/modelo_precio_original_{fecha_scraping}.joblib"))
+    joblib.dump(modelo, os.path.join(MODELS_DIR, f"modelos_precio_original/modelo_precio_original_{fecha_scraping}.joblib"), compress=3)
     #Realizamos las predicciones
     y_pred_train = modelo.predict(X_train)
     y_pred_test = modelo.predict(X_test)
