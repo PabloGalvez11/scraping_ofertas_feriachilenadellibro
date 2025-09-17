@@ -13,10 +13,9 @@ El proyecto tiene por objetivo abarcar y practicar el uso de diversas habilidade
 - **deployments**: Contiene el código para la creación de una web API.
 - **models**: Contiene los tres tipos de modelos separados en carpetas según la variable objetivo. Se van acumulando según el flujo que se realiza. La idea es el entrenamiento de un nuevo modelo utilizando el total de registros según la fecha de ejecución, por lo que se espera que un modelo antiguo haya sido entrenado con menos registros que uno más reciente, ya que el más reciente utiliza los registro extraídos en fechas pasadas y además incluye los de la extracción más reciente.
 - **notebooks**: Contiene los códigos "prototipo" de los pasos previos a la estructuración en archivos .py.
-- **paletas de colores**: Contiene paletas de colores para ser utilizadas en PowerBI.
 - **queries**: Contiene las queries que se realizaron para la creación de la base de datos en PostgreSQL.
 - **src/pipeline**: Contiene los archivos .py utilizados para la elaboración del pipeline.
-- **words**: Contiene documentos de texto word con códigos para la creación de medidas y columnas DAX, además de preguntas para responder con gráficas de PowerBI.
+- **PowerBI**: Contiene documentos de texto word con códigos para la creación de medidas y columnas DAX, además de preguntas para responder con gráficas de PowerBI, paletas de colores descargadas que podrían ser usadas en un dashboard de PowerBI y finalmente el archivo que contiene el dashboard interactivo de PowerBI creado `visualizacion.pbix` para la visualización gráfica de los datos, junto a su versión en pdf para un formato general, aunque no interactivo `visualizacion.pdf`.
 
 
 
@@ -82,10 +81,12 @@ Aún en construcción y evaluando si es posible agregarlo al pipeline.
 Se realizó dentro de `flow.py`, utilizando la librería `prefect` para ello.
 Dentro del archivo se definieron los pasos "task" y se juntaron dentro del flujo "flow". Siguiendo un orden de extracción, limpieza, guardado y finalmente modelamiento de los datos.
 
+### 7. Análisis descriptivo con visualización de gráficas por medio de PowerBI
+
+Se realizó dentro del archivo `visualizacion.pbix`, con objetivo de realizar una visualización gráfica de los datos extraídos e ingresados a la base de datos PostgreSQL, por lo que el dashboard se alimenta de dicha base de datos, no de archivos csv. Se considera bastante simple y a lavez sobrecargada, con muchos puntos a mejorar, sin embargo, la idea es mostrar una parte de mi manejo de dicha herramienta, considerando la escasa experiencia laboral en trabajos de este estilo. Por otra parte, se puede ver de manera general el dashboard mediante el archivo `visualizacion.pdf`, pero en este no es posible interactuar con los paneles.
+
 ---
 ## Apartados adicionales
 
 Se incluirán los siguintes apartados a ser practicados, que bien pueden incorporarse después del paso de guardado de datos:
 - Creación de API mediante FastAPI de manera local.
-- Análisis descriptivo con visualización de gráficas por medio de PowerBI.
-- Guardado en repositorio de GitHub.
