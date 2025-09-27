@@ -68,13 +68,13 @@ def limpieza_datos():
         if pd.isna(texto):  # Maneja valores NaN
             return texto
 
-        # 1️⃣ Insertar espacio antes de mayúscula que sigue a minúscula o puntuación
+        #Insertar espacio antes de mayúscula que sigue a minúscula o puntuación
         texto_limpia = re.sub(r'(?<![A-Z])(?=[A-Z])', ' ', texto).strip()
 
-        # 2️⃣ Quitar espacios después de signos iniciales ¿ y ¡
+        #Quitar espacios después de signos iniciales ¿ y ¡
         texto_limpia = re.sub(r'([¿¡])\s+', r'\1', texto_limpia)
 
-        # 3️⃣ Normalizar espacios
+        #Normalizar espacios
         texto_limpia = re.sub(r'\s+', ' ', texto_limpia)
 
         return texto_limpia

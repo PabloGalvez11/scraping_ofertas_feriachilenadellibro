@@ -65,7 +65,7 @@ def scraping_libros():
             titulo_tag = soup.find(name="h1", attrs={'class': 'product_title'})
             #Extraemos el título del libro
             if not titulo_tag:   # si no hay título, pasamos al siguiente libro
-                print(f"❌ No se encontró información en {url_libro}, se omite.")
+                print(f"No se encontró información en {url_libro}, se omite.")
                 continue
             # Si sí hay título, seguimos
             titulo = titulo_tag.get_text(strip=True)
