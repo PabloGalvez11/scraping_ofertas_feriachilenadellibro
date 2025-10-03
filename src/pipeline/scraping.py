@@ -156,7 +156,7 @@ def scraping_libros():
                 "info_adicional": info_adicional,
                 "descripcion": descripcion,
                 "link": url_libro,
-                "fecha_extraccion": fecha_scraping
+                "fecha_extraccion": fecha_scraping.replace("_", "-")
             }])
             df = pd.concat([df, fila], ignore_index=True)
         #Exportamos el csv de la pagina especificada

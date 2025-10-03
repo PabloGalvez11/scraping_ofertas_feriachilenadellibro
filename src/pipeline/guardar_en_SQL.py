@@ -14,6 +14,8 @@ def guardar_en_SQL():
     dfs = [pd.read_csv(archivo, sep=";", decimal=",", encoding="utf-8") for archivo in archivos]
     #Unimos todos los dataframes en uno solo.
     df = pd.concat(dfs, ignore_index=True)
+    #eliminamos duplicados, es decir, casos en que en dos fechas distintas se haya guardado un mismo libro en oferta y no presente cambio alguno en precio.
+    df = df.drop_duplicates(subset=df.columns.difference(["fecha_extraccion"]), keep="first")
 
     #exportamos a un csv con el total de ofertas. La idea es ir acumulando. En caso de no poder guardar los archivos ofertas_2025_08_24,
     #entonces se debería hacer el append a total_ofertas_feriachilenadellibro
