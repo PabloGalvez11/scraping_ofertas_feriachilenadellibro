@@ -14,6 +14,8 @@ def guardar_en_SQL():
     dfs = [pd.read_csv(archivo, sep=";", decimal=",", encoding="utf-8") for archivo in archivos]
     #Unimos todos los dataframes en uno solo.
     df = pd.concat(dfs, ignore_index=True)
+    #aseguramos que todas las fecha están bien puestas
+    df["fecha_extraccion"] = df["fecha_extraccion"].str.replace("_", "-", regex=False)
     #eliminamos duplicados, es decir, casos en que en dos fechas distintas se haya guardado un mismo libro en oferta y no presente cambio alguno en precio.
     df = df.drop_duplicates(subset=df.columns.difference(["fecha_extraccion"]), keep="first")
 
