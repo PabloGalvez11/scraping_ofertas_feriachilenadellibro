@@ -7,7 +7,7 @@ from datetime import datetime
 from .config import fecha_scraping, PROCESSED_DIR, engine
 import glob #Para importe masivo de archivos csv.
 
-def guardar_en_SQL():
+def guardar_datos_CSV_SQL():
 
     #Importamos los archivos y agrupamos en una lista de dataframes
     archivos = glob.glob(os.path.join(PROCESSED_DIR, "ofertas_*.csv"))
@@ -31,4 +31,4 @@ def guardar_en_SQL():
 
 
 if __name__ == "__main__":
-    csv_to_SQL()
+    guardar_datos_CSV_SQL()

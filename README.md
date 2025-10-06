@@ -2,9 +2,11 @@
 
 Este proyecto consiste en la aplicación en conjunto de diversas técnicas aprendidas para la elaboración de un pipeline a partir de datos reales extraídos de la página web de la librería Feria Chilena del Libro, concretamente de las ofertas ofrecidas vía internet.
 
-El proyecto tiene por objetivo abarcar y practicar el uso de diversas habilidades que puedan realizarse con sólo poseer un nicho de datos. 
+El proyecto tiene por objetivo abarcar y practicar el uso de diversas habilidades que puedan realizarse con sólo poseer un nicho de datos. Dado que sólo se apunta a extraer datos de ofertas, no se espera una gran base de datos, como mucho una tabla de datos.
 
-Se evaluó dividir en README's según carpeta, pero se optó por mantener toda la explicación de la información en un sólo archivo.
+Se evaluó dividir en README's según carpeta, pero se optó por mantener toda la explicación de la información en un sólo archivo, lo que puede resultar en un documento muy abrumador.
+
+De antemano pido disculpas si la explicación de cada sección no es muy clara. Se tiene en cuenta siempre la posibilidad de mejora.
 
 ## Estructura del proyecto
 
@@ -24,12 +26,13 @@ Se evaluó dividir en README's según carpeta, pero se optó por mantener toda l
 ### Archivos dentro de src/pipeline
 - **__init__.py**: Se utiliza para asignar la carpeta de pipeline como un paquete.
 - **config.py**: Contiene variables y funciones definidas para proveer a los demás archivos.
-- **guardar_en_SQL.py**: Contiene el código para el guardado de datasets dentro de la base de datos.
+- **guardar_datos_CSV_SQL.py**: Contiene el código para el guardado de datasets dentro de la base de datos.
 - **flow.py**: Contiene el flujo para el funcionamiento del pipeline.
 - **limpieza_datos.py**: Contiene el proceso de limpieza de datos de los datos extraídos por medio de web scraping.
 - **modelo_descuento.py**: Contiene el proceso para el entrenamiento, predicción y exportación del modelo relacionado a predecir el porcentaje de descuento de un libro.
 - **modelo_precio_oferta.py**: Contiene el proceso para el entrenamiento, predicción y exportación del modelo relacionado a predecir el precio de oferta de un libro.
 - **modelo_precio_original.py**: Contiene el proceso para el entrenamiento, predicción y exportación del modelo relacionado a predecir el precio original de un libro.
+- **NLP_token_stem_lemma.py**: Contiene el proceso de aplicación de técnicas de procesamiento del lenguaje natural (NLP) como tokenización, stemming, lemma, creación y ajuste de modelos para identificar la macrocategoría a la que pertenece un libro según su descripción.
 - **scraping.py**: Contiene el proceso de extracción de datos mediante web scraping.
 
 ### Archivos adicionales
@@ -39,7 +42,7 @@ Se evaluó dividir en README's según carpeta, pero se optó por mantener toda l
 
 ## Metodología
 
-Se contemplan los siguientes pasos generales dentro del pipeline para la creación de un flujo para el proceso de extracción, limpieza, análisis predictivo, NLP y guardado de datos:
+Se contemplan los siguientes pasos generales dentro del pipeline para la creación de un flujo para el proceso de extracción, limpieza, análisis predictivo con machine learning, NLP y proceso de guardado de datos en un archivo csv consolidado y una base de datos PostgreSQL.
 
 ---
 
@@ -64,7 +67,7 @@ Se realizó dentro de `limpieza_datos.py`, principalmente con uso de las librer�
 
 ### 3. Guardado de datos dentro de una base de datos local PostgreSQL
 
-Se realizó dentro de `guardar_en_SQL.py`, principalmente con uso de las librerías `pandas`, `sqlalchemy` y `psycopg2`. El proceso consiste en utilizar la variable engine definida dentro de `config.py` correspondiente a la dirección de la base de datos creada en PostgreSQL.
+Se realizó dentro de `guardar_datos_CSV_SQL.py`, principalmente con uso de las librerías `pandas`, `sqlalchemy` y `psycopg2`. El proceso consiste en utilizar la variable engine definida dentro de `config.py` correspondiente a la dirección de la base de datos creada en PostgreSQL.
 
 ### 4. Análisis predictivo de variables asociadas a un libro.
 
@@ -77,6 +80,7 @@ Se realizaron de manera paralela tres modelos predictivos para variables asociad
 ### 5. Uso de técnicas de Procesamiento del Lenguaje Natural (NLP)
 
 Aún en construcción y evaluando si es posible agregarlo al pipeline.
+Se realizó dentro de `NLP_token_stem_lemma.py`, utilizando librerías para la aplicación de técnicas de NLP como tokenización, stemming, lemmatization. Se ajustaron y realizaron predicciones con los tres modelos dichos, con objetivo de clasificar la macrocategoría a la que pertenece un libro según su descripción. Se ajustó un modelo de regresión multinomial para ello. Se obtuvo la accuracy de cada modelo para poder ser comparados. Para este caso se decidió no exportar los modelos a un archivo .joblib. Por otra parte, dentro del notebook `Paso_6_NLP_token_stem_lemma_tfidf.ipynb` también se agregó el uso del método TF-IDF para crear una recomendación de libros según macrocategoría, categoría, autor de un libro seleccionado, sin embargo, este apartado no será agregado dentro de los pasos.
 
 ### 6. Creación de flujo de datos
 
@@ -90,5 +94,22 @@ Se realizó dentro del archivo `visualizacion.pbix`, con objetivo de realizar un
 ---
 ## Apartados adicionales
 
-Se incluirán los siguintes apartados a ser practicados, que bien pueden incorporarse después del paso de guardado de datos:
+Se evaluará incluir los siguintes apartados a ser practicados, que bien pueden incorporarse después del paso de guardado de datos:
 - Creación de API mediante FastAPI de manera local.
+
+## Cierre
+
+A pesar de ser algo rudimentario, este proyecto subido a GitHub me permitió aplicar y aprender técnicas para la creación de un pipeline de datos bastante útil que automatiza todo un proceso desde la extracción hasta el guardado de datos, así como la aplicación y exportación de modelos de predicción dentro de un entorno local, todo de manera autodidacta, junto a videos de youtube, consultas a ChatGPT y algo de criterio arbitrario.
+
+Por una parte, al ser un objetivo autoimpuesto, me permitió aprender sobre la creación de un flujo de datos, web scraping, guardado en SQL, uso de repositorios de GitHub, procesamiento del lenguaje natural y visualización de datos en PowerBI.
+
+Con la presencia de un objetivo claro como este proyecto, tengo una vía clara para la búsqueda de soluciones. 
+La desventaja es que al ser un proyecto independiente, no me impuse un horario fijo, por lo que el ritmo de trabajo fue intermitente. De haber sido riguroso en ese sentido, probablemente me habría tomado un mes aproximadamente y no dos.
+
+Se deja abierta la posibilidad de utilizar cosas como contenedores, docker, entre otros, sin embargo, sería una aplicación adicional.
+
+Para finalizar, es de mi agrado decir que me encuentro satisfecho con lo aprendido en este proyecto, ya que gran parte de lo aplicado no tendría oportunidad de aprenderlo en la universidad y posiblemente en algún cargo hubiese tardado en llegar al punto de tener que necesitarlo, por lo que valoro aún más el conocimiento adquirido de manera independiente en este proyecto.
+
+Entre otros objetivos, se encuentra el aprender más sobre APIs, Selenium, embeddings, LLM, contenedores, despliegue de modelos, ingeniería de datos en general, aplicación de ciencia de datos en finanzas, así como incorporarme a aprender más sobre inversiones, análisis de riesgo y trading.
+
+Sin más que agregar, se pone fin al proyecto y pido disculpas si ocasioné problemas a la página de la Feria Chilena del Libro, ya que mi web scraping fue muy descarado, sin tiempos de pausa.
